@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0DD5572DCFCFB900743E9F /* FavoriteDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0DD5562DCFCFB900743E9F /* FavoriteDetailsViewController.swift */; };
+		3F2F07C92DCFC7E9006A328D /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F07C82DCFC7E9006A328D /* FavoriteTableViewController.swift */; };
+		3F2F07CB2DCFC85E006A328D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F2F07CA2DCFC85E006A328D /* CustomTableViewCell.swift */; };
 		3FD5E11B2DCFA436006C5235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11A2DCFA436006C5235 /* AppDelegate.swift */; };
 		3FD5E11D2DCFA436006C5235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11C2DCFA436006C5235 /* SceneDelegate.swift */; };
 		3FD5E11F2DCFA436006C5235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11E2DCFA436006C5235 /* ViewController.swift */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0DD5562DCFCFB900743E9F /* FavoriteDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailsViewController.swift; sourceTree = "<group>"; };
+		3F2F07C82DCFC7E9006A328D /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
+		3F2F07CA2DCFC85E006A328D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		3FD5E1172DCFA436006C5235 /* Ballify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD5E11A2DCFA436006C5235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FD5E11C2DCFA436006C5235 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +72,9 @@
 				3FD5E1282DCFA437006C5235 /* LaunchScreen.storyboard */,
 				3FD5E12B2DCFA437006C5235 /* Info.plist */,
 				3FD5E1232DCFA436006C5235 /* Ballify.xcdatamodeld */,
+				3F2F07C82DCFC7E9006A328D /* FavoriteTableViewController.swift */,
+				3F2F07CA2DCFC85E006A328D /* CustomTableViewCell.swift */,
+				3F0DD5562DCFCFB900743E9F /* FavoriteDetailsViewController.swift */,
 			);
 			path = Ballify;
 			sourceTree = "<group>";
@@ -141,7 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2F07CB2DCFC85E006A328D /* CustomTableViewCell.swift in Sources */,
+				3F2F07C92DCFC7E9006A328D /* FavoriteTableViewController.swift in Sources */,
 				3FD5E11F2DCFA436006C5235 /* ViewController.swift in Sources */,
+				3F0DD5572DCFCFB900743E9F /* FavoriteDetailsViewController.swift in Sources */,
 				3FD5E11B2DCFA436006C5235 /* AppDelegate.swift in Sources */,
 				3FD5E11D2DCFA436006C5235 /* SceneDelegate.swift in Sources */,
 				3FD5E1252DCFA436006C5235 /* Ballify.xcdatamodeld in Sources */,
