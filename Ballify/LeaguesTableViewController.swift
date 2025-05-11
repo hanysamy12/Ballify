@@ -39,7 +39,6 @@ class LeaguesTableViewController: UITableViewController {
         cell.cellImage.image = UIImage(named: "laliga")
         cell.cellLabel.text = "Laliga"
         
-
         return cell
     }
     
@@ -50,6 +49,9 @@ class LeaguesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("item no\(indexPath.item)")
+        let matchesVC = self.storyboard?.instantiateViewController(withIdentifier: "matches") as! MatchesCollectionViewController
+        navigationController?.pushViewController(matchesVC, animated: true)
+
     }
 
     /*
