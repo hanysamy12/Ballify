@@ -15,6 +15,7 @@ class MatcheCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var rightLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     
     override func layoutSubviews() {
         leftImg.layer.cornerRadius = leftImg.frame.size.width / 2
