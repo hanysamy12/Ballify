@@ -96,7 +96,6 @@ class LeaguesTableViewController: UITableViewController {
         let url = URL(string: league.league_logo ?? "")
         cell.cellImage.kf.setImage(with: url, placeholder: UIImage(named: "laliga"))
         
-
         return cell
     }
     
@@ -107,6 +106,9 @@ class LeaguesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("item no\(indexPath.item)")
+        let matchesVC = self.storyboard?.instantiateViewController(withIdentifier: "matches") as! MatchesCollectionViewController
+        navigationController?.pushViewController(matchesVC, animated: true)
+
     }
 
     /*
