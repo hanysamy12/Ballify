@@ -17,13 +17,15 @@ class MatchesCollectionViewController: UICollectionViewController {
         
         collectionView.register(UICollectionReusableView.self,                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,                               withReuseIdentifier: "Header")
         
-        
             let rightButton = UIButton(type: .system)
             rightButton.setImage(UIImage(systemName: "heart"), for: .normal)
             rightButton.tintColor = .red
             rightButton.addTarget(self, action: #selector(rightButtonClicked), for: .touchUpInside)
             let rightButtonItem = UIBarButtonItem(customView: rightButton)
             self.navigationItem.rightBarButtonItem = rightButtonItem
+        
+        
+        
         self.title = "UFE Champion Matches"
         
         let layout = UICollectionViewCompositionalLayout{index ,environement in
@@ -45,7 +47,6 @@ class MatchesCollectionViewController: UICollectionViewController {
     }
     @objc func rightButtonClicked() {
         print("rightButton button tapped!")
-        // Handle the button tap (e.g., toggle favorite status, show alert, etc.)
     }
     
     func drawHorezntalSection() -> NSCollectionLayoutSection{
@@ -160,17 +161,46 @@ class MatchesCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MatcheCollectionViewCell
-        cell.leftImg.image = UIImage(named: "cricket")
-        cell.rightImg.image = UIImage(named: "Instagram")
-        cell.leftLabel.text = "Left"
-        cell.rightLabel.text = "right"
-        cell.dateLabel.text = "2025-6-30"
-        cell.timeLabel.text = "11:3"
-        // Configure the cell
-        cell.layer.cornerRadius = 20
-        cell.clipsToBounds = true
-        return cell
+        
+        switch(indexPath.section)
+        {
+        case 0: //get data from upcoming list
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
+            cell.leftImg.image = UIImage(named: "cricket")
+            cell.rightImg.image = UIImage(named: "Instagram")
+            cell.leftLabel.text = "Left"
+            cell.rightLabel.text = "right"
+            cell.dateLabel.text = "2025-6-30"
+            cell.timeLabel.text = "11:3"
+            // Configure the cell
+            cell.layer.cornerRadius = 20
+            cell.clipsToBounds = true
+            cell.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.6)
+            return cell
+        case 1: //get data from Latest Events list
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
+            cell.leftImg.image = UIImage(named: "cricket")
+            cell.rightImg.image = UIImage(named: "Instagram")
+            cell.leftLabel.text = "Left"
+            cell.rightLabel.text = "right"
+            cell.dateLabel.text = "2025-6-30"
+            cell.timeLabel.text = "11:3"
+            // Configure the cell
+            cell.layer.cornerRadius = 20
+            cell.clipsToBounds = true
+            return cell
+        default:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
+            cell.teamImg.image = UIImage(named: "Instagram")
+            cell.teamName.text = "Team Name"
+            cell.layer.cornerRadius = 20
+            cell.clipsToBounds = true
+            cell.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.6)
+
+            return cell
+        
+        }
+    
     }
 
 
