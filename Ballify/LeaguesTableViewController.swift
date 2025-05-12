@@ -6,19 +6,70 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LeaguesTableViewController: UITableViewController {
 
+    var leagues: [League] = []
+//    var viewModel: LeaguesTablePresenter!
+    var sportType: SportType!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(sportType.rawValue)
+        
+//        viewModel = LeaguesTablePresenter()
+        
+        // controller >> ViewModel to get the data
+        let presenter  = LeaguesTablePresenter()
+        presenter.attachView(leaguesTableViewController: self)
+        
+        switch sportType {
+        case .football:
+            print("Calling Football API")
+            self.title = "Football Leagues"
+            presenter.getDataFromModel(sportType: sportType.rawValue)
+        case .tennis:
+            print("Calling Tennis API")
+            self.title = "Tennis Leagues"
+            presenter.getDataFromModel(sportType: sportType.rawValue)
+        case .basketball:
+            print("Calling Basketball API")
+            self.title = "Basketball Leagues"
+            presenter.getDataFromModel(sportType: sportType.rawValue)
+        case .cricket:
+            print("Calling Cricket API")
+            self.title = "Cricket Leagues"
+            presenter.getDataFromModel(sportType: sportType.rawValue)
+        case .none:
+            break
+        }
+        
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+//        viewModel.bindResultToViewController = {[weak self] in
+//            self?.renderToView()
+//        }
     }
 
+//    // from controller >> to view
+//    func renderToView(){
+//
+//        leagues = self.viewModel.vmResult
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//        }
+//    }
+    // from controller >> to view
+    func renderToView(result:LeaguesResult){
+        
+        leagues = result.result
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -28,7 +79,7 @@ class LeaguesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 12
+        return leagues.count
     }
 
     
@@ -36,8 +87,14 @@ class LeaguesTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "leaguesCell", for: indexPath) as! CustomTableViewCell
         
-        cell.cellImage.image = UIImage(named: "laliga")
-        cell.cellLabel.text = "Laliga"
+//        cell.cellImage.image = UIImage(named: "laliga")
+//        cell.cellLabel.text = "Laliga"
+        
+        let league = leagues[indexPath.row]
+        
+        cell.cellLabel.text = league.league_name
+        let url = URL(string: league.league_logo ?? "")
+        cell.cellImage.kf.setImage(with: url, placeholder: UIImage(named: "laliga"))
         
 
         return cell

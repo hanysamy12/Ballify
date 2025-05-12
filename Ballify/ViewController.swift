@@ -64,25 +64,25 @@ class ViewController: UIViewController {
         case 0:
             print("Football Leagues Screen")
             let leaguesVC = self.storyboard?.instantiateViewController(withIdentifier: "leagues") as! LeaguesTableViewController
-            
+            leaguesVC.sportType = .football
             navigationController?.pushViewController(leaguesVC, animated: true)
         
         case 1:
             print("Tennis Leagues Screen")
             let leaguesVC = self.storyboard?.instantiateViewController(withIdentifier: "leagues") as! LeaguesTableViewController
-            
+            leaguesVC.sportType = .tennis
             navigationController?.pushViewController(leaguesVC, animated: true)
             
         case 2:
             print("Basketball Leagues Screen")
             let leaguesVC = self.storyboard?.instantiateViewController(withIdentifier: "leagues") as! LeaguesTableViewController
-            
+            leaguesVC.sportType = .basketball
             navigationController?.pushViewController(leaguesVC, animated: true)
             
         case 3:
             print("Cricket Leagues Screen")
             let leaguesVC = self.storyboard?.instantiateViewController(withIdentifier: "leagues") as! LeaguesTableViewController
-            
+            leaguesVC.sportType = .cricket
             navigationController?.pushViewController(leaguesVC, animated: true)
             
         default:
