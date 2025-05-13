@@ -6,33 +6,20 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "leagueCell"
 
 class MatchesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     ///------------
-    let finishedFixtures: [FixtureResponse] = [
-        FixtureResponse(event_key: 1001, event_date: "2025-05-10", event_time: "15:00", event_home_team: "FC Alpha", event_away_team: "Beta United", event_final_result: "2 - 1", event_status: "Finished", home_team_logo: "https://example.com/logo_alpha.png", away_team_logo: "https://example.com/logo_beta.png"),
-        FixtureResponse(event_key: 1002, event_date: "2025-05-10", event_time: "17:30", event_home_team: "Gamma FC", event_away_team: "Delta City", event_final_result: "1 - 1", event_status: "Finished", home_team_logo: "https://example.com/logo_gamma.png", away_team_logo: "https://example.com/logo_delta.png"),
-        FixtureResponse(event_key: 1003, event_date: "2025-05-10", event_time: "20:00", event_home_team: "Omega Rovers", event_away_team: "Epsilon SC", event_final_result: "0 - 3", event_status: "Finished", home_team_logo: "https://example.com/logo_omega.png", away_team_logo: "https://example.com/logo_epsilon.png"),
-        FixtureResponse(event_key: 1004, event_date: "2025-05-11", event_time: "14:00", event_home_team: "Lions FC", event_away_team: "Sharks FC", event_final_result: "2 - 2", event_status: "Finished", home_team_logo: "https://example.com/logo_lions.png", away_team_logo: "https://example.com/logo_sharks.png"),
-        FixtureResponse(event_key: 1005, event_date: "2025-05-11", event_time: "16:45", event_home_team: "Falcons United", event_away_team: "Wolves FC", event_final_result: "3 - 0", event_status: "Finished", home_team_logo: "https://example.com/logo_falcons.png", away_team_logo: "https://example.com/logo_wolves.png")
-    ]
+    var finishedFixtures: [Fixture] = [ ]
 
-    let upcomingFixtures: [FixtureResponse] = [
-        FixtureResponse(event_key: 1006, event_date: "2025-05-12", event_time: "18:00", event_home_team: "Kings XI", event_away_team: "Titans Club", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_kings.png", away_team_logo: "https://example.com/logo_titans.png"),
-        FixtureResponse(event_key: 1007, event_date: "2025-05-12", event_time: "20:30", event_home_team: "Phoenix FC", event_away_team: "Blazers", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_phoenix.png", away_team_logo: "https://example.com/logo_blazers.png"),
-        FixtureResponse(event_key: 1008, event_date: "2025-05-13", event_time: "13:00", event_home_team: "Storm Riders", event_away_team: "Galaxy Stars", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_storm.png", away_team_logo: "https://example.com/logo_galaxy.png"),
-        FixtureResponse(event_key: 1009, event_date: "2025-05-13", event_time: "16:15", event_home_team: "Tornado FC", event_away_team: "Comets FC", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_tornado.png", away_team_logo: "https://example.com/logo_comets.png"),
-        FixtureResponse(event_key: 1010, event_date: "2025-05-13", event_time: "19:00", event_home_team: "Bulls United", event_away_team: "Rhinos", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_bulls.png", away_team_logo: "https://example.com/logo_rhinos.png"),
-        FixtureResponse(event_key: 1011, event_date: "2025-05-14", event_time: "15:30", event_home_team: "Spartans", event_away_team: "Gladiators", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_spartans.png", away_team_logo: "https://example.com/logo_gladiators.png"),
-        FixtureResponse(event_key: 1012, event_date: "2025-05-14", event_time: "18:00", event_home_team: "Centaurs", event_away_team: "Griffins", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_centaurs.png", away_team_logo: "https://example.com/logo_griffins.png"),
-        FixtureResponse(event_key: 1013, event_date: "2025-05-15", event_time: "12:00", event_home_team: "Panthers", event_away_team: "Cobras", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_panthers.png", away_team_logo: "https://example.com/logo_cobras.png"),
-        FixtureResponse(event_key: 1014, event_date: "2025-05-15", event_time: "15:00", event_home_team: "Vikings", event_away_team: "Raiders", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_vikings.png", away_team_logo: "https://example.com/logo_raiders.png"),
-        FixtureResponse(event_key: 1015, event_date: "2025-05-15", event_time: "19:30", event_home_team: "Eagles", event_away_team: "Hawks", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_eagles.png", away_team_logo: "https://example.com/logo_hawks.png")
-    ]
+    var upcomingFixtures: [Fixture] = []
     
-    let teams: [TeamRsponse] = [
+    var sportType: SportType!
+    
+    var leagueId : Int!
+    var teams: [TeamRsponse] = [
         TeamRsponse(
             team_name: "Lions FC",
             team_logo: "https://example.com/logo_lions.png",
@@ -63,6 +50,30 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sportType = SportType.football
+        leagueId = 177
+        let presenter = LeagueDetailsPresenter()
+        presenter.attachToView(leagaDetailsVC: self)
+        switch sportType {
+        case .football:
+            print("Calling Football API")
+            self.title = "Football Leagues"
+            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        case .tennis:
+            print("Calling Tennis API")
+            self.title = "Tennis Leagues"
+            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        case .basketball:
+            print("Calling Basketball API")
+            self.title = "Basketball Leagues"
+            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        case .cricket:
+            print("Calling Cricket API")
+            self.title = "Cricket Leagues"
+            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        case .none:
+            break
+        }
         
         collectionView.register(SectionHeader.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
 
@@ -105,9 +116,17 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         }
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
+    
+    func renderToView(finitshedMaches :[Fixture], upcomingMatches : [Fixture]){
+       // print("Matches Details rederView \(finitshedMaches[0].event_status)")
+        self.finishedFixtures = finitshedMaches
+        self.upcomingFixtures = upcomingMatches
+        collectionView.reloadData()
+    }
     @objc func rightButtonClicked() {
         print("rightButton button tapped!")
     }
+    
     
     func drawHorezntalSection() -> NSCollectionLayoutSection{
      //item size
@@ -242,14 +261,15 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                 }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var match :FixtureResponse!
+        var match :Fixture!
         switch(indexPath.section)
         {
         case 0: //get data from upcoming list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = upcomingFixtures[indexPath.row]
-            cell.leftImg.image = UIImage(named: "cricket")
-            cell.rightImg.image = UIImage(named: "Instagram")
+            
+            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo), placeholder: UIImage(named: "laliga"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date
@@ -263,8 +283,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         case 1: //get data from Latest Events list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = finishedFixtures[indexPath.row]
-            cell.leftImg.image = UIImage(named: "cricket")
-            cell.rightImg.image = UIImage(named: "Instagram")
+            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo), placeholder: UIImage(named: "laliga"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date

@@ -10,6 +10,7 @@ import Alamofire
 
 protocol NetworkProtocol {
     static func fetchLeaguesFromJSON(sportType:String, compilationHandler: @escaping (LeaguesResult?) -> Void)
+    static func fetchFixtureFromJSON(sportType:String , leagueId : Int, compilation : @escaping (FixtureResponse?) -> Void)
 }
 
 class NetworkService: NetworkProtocol {
@@ -39,9 +40,26 @@ class NetworkService: NetworkProtocol {
         }
     }
     
-    
-    
-    
-    
-    
+    static func fetchFixtureFromJSON(sportType: String, leagueId: Int, compilation: @escaping (FixtureResponse?) -> Void) {
+        // Construct the URL with query parameters
+        let url = "https://apiv2.allsportsapi.com/\(sportType)/?met=Fixtures&APIkey=ada750b74f80bd1937fae4524ced00601c971ee2f1b4f22f9c2d8050a8e19ed1&from=2025-05-11&to=2025-05-16&leagueId=\(leagueId)"
+        print("NetworkServices \(url)")
+        
+        let headers: HTTPHeaders = [
+            "Accept": "application/json"
+        ]
+        
+        // Making the request
+        AF.request(url, headers: headers).responseDecodable(of: FixtureResponse.self) { response in
+            switch response.result {
+            case .success(let result):
+                compilation(result)
+            case .failure(let error):
+                print("Failed to fetch leagueDetails: \(error.localizedDescription)")
+                compilation(nil)
+            }
+        }
+    }
+
 }
+
