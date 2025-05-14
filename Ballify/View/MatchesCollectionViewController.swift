@@ -13,14 +13,13 @@ private let reuseIdentifier = "leagueCell"
 class MatchesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     ///------------
     var finishedFixtures: [Fixture] = [ ]
-
     var upcomingFixtures: [Fixture] = []
+    var teams: [Team] = []
     
     var sportType: SportType!
-    
     var leagueId : Int!
     var leagueName : String!
-    var teams: [Team] = []
+    var leagueLogo : String!
 
 
     //----
@@ -30,27 +29,10 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
 //        sportType = SportType.football
         let presenter = LeagueDetailsPresenter()
         presenter.attachToView(leagaDetailsVC: self)
-        switch sportType {
-        case .football:
-            print("Calling Football API")
-            self.title = "Football Leagues"
-            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-            presenter.getTeamDetails(sportType: sportType.rawValue, leagueId: leagueId)
-        case .tennis:
-            print("Calling Tennis API")
-            self.title = "Tennis Leagues"
-            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-        case .basketball:
-            print("Calling Basketball API")
-            self.title = "Basketball Leagues"
-            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-        case .cricket:
-            print("Calling Cricket API")
-            self.title = "Cricket Leagues"
-            presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-        case .none:
-            break
-        }
+        
+        presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        presenter.getTeamDetails(sportType: sportType.rawValue, leagueId: leagueId)
+
         
         collectionView.register(SectionHeader.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
 
@@ -66,12 +48,6 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             .foregroundColor: UIColor.systemGreen
             ]
             navigationController?.navigationBar.titleTextAttributes = textAttributes
-        /*
-         pre Screen
-         let backItem = UIBarButtonItem()
-             backItem.title = ""
-             navigationItem.backBarButtonItem = backItem
-         */
         
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         
@@ -81,11 +57,24 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             switch(index)
             {
             case 0:
-                return self.drawHorezntalSection()
+                if self.upcomingFixtures.isEmpty{
+                    return nil
+                }
+                else{
+                    return self.drawHorezntalSection()
+                }
             case 1:
-                return self.drawVerticalSection()
+                if self.finishedFixtures.isEmpty{
+                    return nil
+                }else{
+                    return self.drawVerticalSection()
+                }
             case 2:
-                return self.drawHorezntalSection()
+                if self.teams.isEmpty{
+                    return nil
+                }else{
+                    return self.drawHorezntalSection()
+                }
             default:
                 return nil
             }
@@ -107,7 +96,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         collectionView.reloadData()
     }
     @objc func rightButtonClicked() {
-        print("rightButton button tapped!")
+        print("League Name \(leagueName ?? "N/A") League Logo \(leagueLogo ?? "N/A")")
     }
     
     
@@ -227,11 +216,23 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! SectionHeader
                    switch indexPath.section {
                    case 0:
+                       if upcomingFixtures.isEmpty {
+                           headerView.titleLabel.text = "NO Upcoming Matches"
+                       }else{
                            headerView.titleLabel.text = "Upcoming Matches"
+                       }
                    case 1:
+                       if finishedFixtures.isEmpty {
+                           headerView.titleLabel.text = "NO Latest Matches"
+                       }else{
                            headerView.titleLabel.text = "Latest Matches"
+                       }
                    case 2:
+                       if teams.isEmpty{
+                           headerView.titleLabel.text = "NO Teams"
+                       }else{
                            headerView.titleLabel.text = "Teams"
+                       }
                    default:
                        headerView.titleLabel.text = ""
                    }
@@ -239,7 +240,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                    return headerView
                }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-                    return CGSize(width: collectionView.bounds.width, height: 50)
+                    return CGSize(width: collectionView.bounds.width, height: 40)
                 }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -283,6 +284,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             // Configure the cell
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
+            cell.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.6)
+
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
@@ -309,9 +312,9 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             teamVC.teamData = teams[indexPath.row]
             navigationController?.pushViewController(teamVC, animated: true)
 
-             
         }
         
     }
 
 }
+

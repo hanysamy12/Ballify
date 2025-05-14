@@ -111,6 +111,7 @@ class LeaguesTableViewController: UITableViewController {
         matchesVC.leagueId = league.league_key
         matchesVC.leagueName = league.league_name
         matchesVC.sportType = sportType
+        matchesVC.leagueLogo = league.league_logo
         navigationController?.pushViewController(matchesVC, animated: true)
 
     }
