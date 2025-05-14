@@ -19,40 +19,15 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     var sportType: SportType!
     
     var leagueId : Int!
-    var teams: [Team] = [
-        Team(
-            team_name: "Lions FC",
-            team_logo: "https://example.com/logo_lions.png",
-            players: [
-                Player(
-                    player_image: "https://example.com/player1.png",
-                    player_name: "John Smith",
-                    player_number: "10",
-                    player_type: "Forward"
-                )
-            ]
-        ),
-        Team(
-            team_name: "Sharks United",
-            team_logo: "https://example.com/logo_sharks.png",
-            players: [
-                Player(
-                    player_image: "https://example.com/player2.png",
-                    player_name: "Carlos Mendes",
-                    player_number: "5",
-                    player_type: "Defender"
-                )
-            ]
-        )
-    ]
+    var leagueName : String!
+    var teams: [Team] = []
 
 
     //----
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        sportType = SportType.football
-        leagueId = 66
+//        sportType = SportType.football
         let presenter = LeagueDetailsPresenter()
         presenter.attachToView(leagaDetailsVC: self)
         switch sportType {
@@ -60,7 +35,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             print("Calling Football API")
             self.title = "Football Leagues"
             presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-            presenter.getTeamDetails(leagueId: 177)
+            presenter.getTeamDetails(leagueId: leagueId)
         case .tennis:
             print("Calling Tennis API")
             self.title = "Tennis Leagues"
@@ -79,7 +54,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         
         collectionView.register(SectionHeader.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
 
-        self.title = "UFE Champion Matches"
+        self.title = leagueName
             let rightButton = UIButton(type: .system)
             rightButton.setImage(UIImage(systemName: "heart"), for: .normal)
             rightButton.tintColor = .green
@@ -276,8 +251,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = upcomingFixtures[indexPath.row]
             
-            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo), placeholder: UIImage(named: "laliga"))
-            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo), placeholder: UIImage(named: "laliga"))
+            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date
@@ -291,8 +266,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         case 1: //get data from Latest Events list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = finishedFixtures[indexPath.row]
-            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo), placeholder: UIImage(named: "laliga"))
-            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo), placeholder: UIImage(named: "laliga"))
+            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date
@@ -321,12 +296,14 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 2{ /// teams only
             print("Team Clicked")
+            let team = teams[indexPath.row]
+            print("\(team.team_name!)")
             
-            /*
-             let teamVC = self.storyboard?.instantiateViewController(withIdentifier: "teamDetails") as! TeamDetailsViewController
-             navigationController?.pushViewController(teamVC, animated: true)
+            let teamVC = self.storyboard?.instantiateViewController(withIdentifier: "teamDetails") as! TeamTableViewController
+            teamVC.teamData = teams[indexPath.row]
+            navigationController?.pushViewController(teamVC, animated: true)
 
-             */
+             
         }
         
     }
