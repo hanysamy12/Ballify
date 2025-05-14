@@ -41,10 +41,10 @@ class LeagueDetailsPresenter{
         }
     }
     
-    func getTeamDetails(leagueId: Int) {
+    func getTeamDetails(sportType:String, leagueId: Int) {
        // print("Team Details Presenter \(leagueId)")
         
-        NetworkService.fetchTeamsFromJSON(leagueId: leagueId) { teamList in
+        NetworkService.fetchTeamsFromJSON(sportType:sportType, leagueId: leagueId) { teamList in
             guard let teamList = teamList else { return }
             self.leagueDetailsVC.renderTeamToView(teams: teamList)
         }
