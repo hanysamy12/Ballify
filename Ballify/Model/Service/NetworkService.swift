@@ -11,7 +11,7 @@ import Alamofire
 protocol NetworkProtocol {
     static func fetchLeaguesFromJSON(sportType:String, compilationHandler: @escaping (LeaguesResult?) -> Void)
     static func fetchFixtureFromJSON(sportType:String , leagueId : Int, compilation : @escaping (FixtureResponse?) -> Void)
-    static func fetchTeamsFromJSON(leagueId: Int, compilation: @escaping ([Team]?) -> Void) 
+    static func fetchTeamsFromJSON(sportType:String, leagueId: Int, compilation: @escaping ([Team]?) -> Void)
 
 }
 
@@ -63,33 +63,12 @@ class NetworkService: NetworkProtocol {
         }
     }
     
-    static func fetchTeamsFromJSON(leagueId: Int, compilation: @escaping ([Team]?) -> Void) {
-        let url = "https://apiv2.allsportsapi.com/football/?met=Teams&leagueId=\(leagueId)&APIkey=610a521a58aecd03ccaec21bfe628495b12cf9501f236731a5bac15ae3211843"
+    static func fetchTeamsFromJSON(sportType:String, leagueId: Int, compilation: @escaping ([Team]?) -> Void) {
+        let url = "https://apiv2.allsportsapi.com/\(sportType)/?met=Teams&leagueId=\(leagueId)&APIkey=610a521a58aecd03ccaec21bfe628495b12cf9501f236731a5bac15ae3211843"
         
         let headers: HTTPHeaders = [
             "Accept": "application/json"
         ]
-//        AF.request(url, method: .get, headers: headers).responseData { response in
-//                switch response.result {
-//                case .success(let data):
-//                    if let jsonString = String(data: data, encoding: .utf8) {
-//                        print("Team Raw JSON response: \(jsonString)")
-//                    }
-//                    do {
-//                        let result = try JSONDecoder().decode(TeamResponse.self, from: data)
-//                        compilation(result.result)
-//                    }
-//                    catch {
-//                        print("Decoding error: \(error.localizedDescription)")
-//                        compilation(nil)
-//                    }
-//                    }
-//                case .failure(let error):
-//                    print("Team Request failed: \(error.localizedDescription)")
-//                    compilation(nil)
-//                }
-//            }
-
         
         AF.request(url, headers: headers).responseDecodable(of: TeamResponse.self) { response in
             switch response.result {

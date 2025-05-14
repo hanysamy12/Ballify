@@ -35,7 +35,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             print("Calling Football API")
             self.title = "Football Leagues"
             presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
-            presenter.getTeamDetails(leagueId: leagueId)
+            presenter.getTeamDetails(sportType: sportType.rawValue, leagueId: leagueId)
         case .tennis:
             print("Calling Tennis API")
             self.title = "Tennis Leagues"
@@ -227,7 +227,6 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! SectionHeader
                    switch indexPath.section {
                    case 0:
-                       
                            headerView.titleLabel.text = "Upcoming Matches"
                    case 1:
                            headerView.titleLabel.text = "Latest Matches"
@@ -253,8 +252,15 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             
             cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
             cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
-            cell.leftLabel.text = match.event_home_team
-            cell.rightLabel.text = match.event_away_team
+            if sportType == .tennis
+            {
+                cell.leftLabel.text = match.event_first_player
+                cell.rightLabel.text = match.event_home_team
+            }else{
+                cell.leftLabel.text = match.event_home_team
+                cell.rightLabel.text = match.event_away_team
+            }
+            
             cell.dateLabel.text = match.event_date
             cell.timeLabel.text = match.event_time
             cell.resultLabel.text = ""
