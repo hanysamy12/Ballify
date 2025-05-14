@@ -9,19 +9,25 @@ import UIKit
 
 class TeamTableViewController: UITableViewController {
 
+    
+    var teamData : Team!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
 
         let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 200))
 
-        let imageView = UIImageView(image: UIImage(named: "club_logo"))
+        let imageView = UIImageView()
+        let url = URL(string: teamData.team_logo ?? "")
+        imageView.kf.setImage(with: url, placeholder: UIImage(named: "club_logo"))
+        
         imageView.frame = CGRect(x: (headerView.frame.width - 100)/2, y: 20, width: 100, height: 100)
         imageView.contentMode = .scaleAspectFit
         headerView.addSubview(imageView)
 
         let nameLabel = UILabel(frame: CGRect(x: 20, y: 130, width: headerView.frame.width - 40, height: 40))
-        nameLabel.text = "Real Madrid"
+        nameLabel.text = teamData.team_name
         nameLabel.textAlignment = .center
         nameLabel.font = UIFont.boldSystemFont(ofSize: 24)
         headerView.addSubview(nameLabel)
@@ -39,7 +45,7 @@ class TeamTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 12
+        return teamData.players?.count ?? 0
     }
 
     
@@ -49,11 +55,13 @@ class TeamTableViewController: UITableViewController {
         cell.playerImg.image = UIImage(named: "player")
 //        cell.cellLabel.text = "Laliga"
         
-//        let league = leagues[indexPath.row]
-        
+        let player = teamData.players![indexPath.row]
+        cell.playerName.text = player.player_name
+        cell.playerPosition.text = player.player_type
+        cell.playerNum.text = "# \(player.player_number!)"
 //        cell.cellLabel.text = league.league_name
-//        let url = URL(string: league.league_logo ?? "")
-//        cell.cellImage.kf.setImage(with: url, placeholder: UIImage(named: "laliga"))
+        let url = URL(string: player.player_image ?? "")
+        cell.playerImg.kf.setImage(with: url, placeholder: UIImage(named: "player"))
 
         return cell
     }
