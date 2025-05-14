@@ -19,8 +19,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     var sportType: SportType!
     
     var leagueId : Int!
-    var teams: [TeamRsponse] = [
-        TeamRsponse(
+    var teams: [Team] = [
+        Team(
             team_name: "Lions FC",
             team_logo: "https://example.com/logo_lions.png",
             players: [
@@ -32,7 +32,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                 )
             ]
         ),
-        TeamRsponse(
+        Team(
             team_name: "Sharks United",
             team_logo: "https://example.com/logo_sharks.png",
             players: [
@@ -46,12 +46,13 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         )
     ]
 
+
     //----
 
     override func viewDidLoad() {
         super.viewDidLoad()
         sportType = SportType.football
-        leagueId = 177
+        leagueId = 66
         let presenter = LeagueDetailsPresenter()
         presenter.attachToView(leagaDetailsVC: self)
         switch sportType {
@@ -59,6 +60,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             print("Calling Football API")
             self.title = "Football Leagues"
             presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+            presenter.getTeamDetails(leagueId: 177)
         case .tennis:
             print("Calling Tennis API")
             self.title = "Tennis Leagues"
@@ -121,6 +123,12 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
        // print("Matches Details rederView \(finitshedMaches[0].event_status)")
         self.finishedFixtures = finitshedMaches
         self.upcomingFixtures = upcomingMatches
+        collectionView.reloadData()
+    }
+    func renderTeamToView(teams : [Team])
+    {
+        self.teams = teams
+        print("Collectiion View teams Count = \(teams.count)")
         collectionView.reloadData()
     }
     @objc func rightButtonClicked() {
@@ -298,7 +306,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
             let team = teams[indexPath.row]
-            cell.teamImg.image = UIImage(named: "Instagram")
+            cell.teamImg.kf.setImage(with: URL(string: team.team_logo ?? ""),placeholder: UIImage(named: "laliga"))
             cell.teamName.text = team.team_name
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
@@ -311,7 +319,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 2{
+        if indexPath.section == 2{ /// teams only
             print("Team Clicked")
             
             /*

@@ -24,9 +24,9 @@ class LeagueDetailsPresenter{
             guard let fixtures = fixtures else {return}
            // print("League Details Presenter Network Call\(fixtures)")
             if let fixtureList = fixtures.result {
-                print("League Details Presenter Fixture List \(fixtures.result!)")
+                //print("League Details Presenter Fixture List \(fixtures.result!)")
                 for f in fixtureList {
-                    print("F === \(f)")
+                  //  print("F === \(f)")
                     if f.event_final_result == "" || f.event_final_result == "-"{
                         upcomingFixture.append(f)
                     } else {
@@ -38,9 +38,15 @@ class LeagueDetailsPresenter{
                 print("No fixtures found.")
             }
 
-            
-            
-            
+        }
+    }
+    
+    func getTeamDetails(leagueId: Int) {
+       // print("Team Details Presenter \(leagueId)")
+        
+        NetworkService.fetchTeamsFromJSON(leagueId: leagueId) { teamList in
+            guard let teamList = teamList else { return }
+            self.leagueDetailsVC.renderTeamToView(teams: teamList)
         }
     }
 }

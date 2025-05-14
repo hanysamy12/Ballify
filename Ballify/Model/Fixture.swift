@@ -24,13 +24,4 @@ struct Fixture : Codable{
     
 }
 
-/*
- in Presnter
- for result in fixtures {
- if result.event_ft_result == "" {
-     self.upcomingFixtures.append(result)
- } else {
-     self.latestMatch.append(result)
- }
-}
- */
+
