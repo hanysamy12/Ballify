@@ -468,7 +468,7 @@
                                 <size key="customSize" width="391" height="214"/>
                                 <connections>
                                     <outlet property="dateLabel" destination="Nts-NZ-OhW" id="Kbv-hs-yXH"/>
-                                    <outlet property="leftImg" destination="FEm-Cz-auA" id="Dfd-4D-NhH"/>
+                                    <outlet property="leftImg" destination="IxV-E8-yXK" id="3na-Qg-qPL"/>
                                     <outlet property="leftLabel" destination="I6r-Hd-60p" id="nSJ-CF-Eda"/>
                                     <outlet property="resultLabel" destination="kPg-Bl-JMd" id="l67-fc-77L"/>
                                     <outlet property="rightImg" destination="FEm-Cz-auA" id="RE2-i3-qEh"/>
