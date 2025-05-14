@@ -6,15 +6,20 @@
 //
 
 import Foundation
-struct TeamRsponse{
-    let team_name : String
-    let team_logo : String
-    let players :[Player]
+
+struct TeamResponse: Codable {
+    let result: [Team]
 }
 
-struct Player{
-    let player_image : String
-    let player_name : String
-    let player_number : String
-    let player_type : String
+struct Team : Codable{
+    let team_name : String?
+    let team_logo : String?
+    let players :[Player]?
+}
+
+struct Player : Codable{
+    let player_image : String?
+    let player_name : String?
+    let player_number : String?
+    let player_type : String?
 }
