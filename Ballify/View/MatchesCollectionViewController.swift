@@ -22,12 +22,13 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     var leagueLogo : String!
 
 
+    let presenter = LeagueDetailsPresenter()
+
     //----
 
     override func viewDidLoad() {
         super.viewDidLoad()
 //        sportType = SportType.football
-        let presenter = LeagueDetailsPresenter()
         presenter.attachToView(leagaDetailsVC: self)
         
         presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
@@ -97,6 +98,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     }
     @objc func rightButtonClicked() {
         print("League Name \(leagueName ?? "N/A") League Logo \(leagueLogo ?? "N/A")")
+        let league = League(league_key: self.leagueId, league_name: self.leagueName, league_logo: self.leagueLogo)
+        presenter.saveLeagueToCoreData(league: league, sportType: self.sportType.rawValue)
     }
     
     

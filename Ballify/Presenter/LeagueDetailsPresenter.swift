@@ -49,4 +49,9 @@ class LeagueDetailsPresenter{
             self.leagueDetailsVC.renderTeamToView(teams: teamList)
         }
     }
+    func saveLeagueToCoreData(league : League, sportType : String)
+    {
+        CoreDataService.addToCoreData(league: league, sportType: sportType)
+    }
+    
 }

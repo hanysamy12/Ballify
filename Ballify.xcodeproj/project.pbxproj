@@ -23,6 +23,7 @@
 		3F69E5032DD355A1000652F9 /* LeagueDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69E5022DD355A1000652F9 /* LeagueDetailsPresenter.swift */; };
 		3F83D67D2DD147CA00AC0584 /* MatchesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F83D67C2DD147CA00AC0584 /* MatchesCollectionViewController.swift */; };
 		3FB076C22DD15AA40067B877 /* MatcheCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB076C12DD15AA40067B877 /* MatcheCollectionViewCell.swift */; };
+		3FCF04B52DD613510079B486 /* LocalService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCF04B42DD613510079B486 /* LocalService.swift */; };
 		3FD5E11B2DCFA436006C5235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11A2DCFA436006C5235 /* AppDelegate.swift */; };
 		3FD5E11D2DCFA436006C5235 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11C2DCFA436006C5235 /* SceneDelegate.swift */; };
 		3FD5E11F2DCFA436006C5235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD5E11E2DCFA436006C5235 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		3F69E5022DD355A1000652F9 /* LeagueDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsPresenter.swift; sourceTree = "<group>"; };
 		3F83D67C2DD147CA00AC0584 /* MatchesCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesCollectionViewController.swift; sourceTree = "<group>"; };
 		3FB076C12DD15AA40067B877 /* MatcheCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatcheCollectionViewCell.swift; sourceTree = "<group>"; };
+		3FCF04B42DD613510079B486 /* LocalService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalService.swift; sourceTree = "<group>"; };
 		3FD5E1172DCFA436006C5235 /* Ballify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ballify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FD5E11A2DCFA436006C5235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3FD5E11C2DCFA436006C5235 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				228469542DD20FF5008E99F5 /* NetworkService.swift */,
+				3FCF04B42DD613510079B486 /* LocalService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				3FF19BE32DD24C9B009998B0 /* Fixture.swift in Sources */,
 				3FF19BE52DD24DFF009998B0 /* TeamResponse.swift in Sources */,
 				3F2F07C92DCFC7E9006A328D /* FavoriteTableViewController.swift in Sources */,
+				3FCF04B52DD613510079B486 /* LocalService.swift in Sources */,
 				228469622DD233A0008E99F5 /* LeaguesTablePresenter.swift in Sources */,
 				3FD5E11F2DCFA436006C5235 /* ViewController.swift in Sources */,
 				3F0DD5572DCFCFB900743E9F /* FavoriteDetailsViewController.swift in Sources */,
