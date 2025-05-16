@@ -8,16 +8,33 @@
 import UIKit
 import Network
 class FavoriteTableViewController: UITableViewController {
+    var leagues: [League] = []
+    var sportType: SportType!
+    
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "NetworkMonitor")
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-
+        // controller >> ViewModel to get the data
+        let presenter  = FavoriteTablePresenter()
+        presenter.attachView(favoriteTableViewController: self)
        
+        self.title = "Football Leagues"
+        presenter.getDataFromCoreDate(sportType: SportType.football.rawValue)
 
         
+    }
+    
+    
+    // from controller >> to view
+    func renderToView(result:[League]){
+        
+        leagues = result
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -29,14 +46,20 @@ class FavoriteTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 12
+        return leagues.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "favoriteCell", for: indexPath) as! CustomTableViewCell
-        cell.cellImage.image = UIImage(named: "Instagram")
-        cell.cellLabel.text = "Instagram Icon"
+//        cell.cellImage.image = UIImage(named: "Instagram")
+//        cell.cellLabel.text = "Instagram Icon"
+        
+        let league = leagues[indexPath.row]
+        
+        cell.cellLabel.text = league.league_name
+        let url = URL(string: league.league_logo ?? "")
+        cell.cellImage.kf.setImage(with: url, placeholder: UIImage(named: "laliga"))
         
         return cell
     }

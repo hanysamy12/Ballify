@@ -11,6 +11,7 @@ import UIKit
  
 protocol CoreDataProtocol{
     static func addToCoreData(league: League, sportType : String)
+    static func getLeaguesFromCoreData(sportType:String, compilationHandler: @escaping ([League]?) -> Void)
 }
 
 
@@ -44,4 +45,29 @@ class CoreDataService : CoreDataProtocol{
         }
         
     }
+    
+    static func getLeaguesFromCoreData(sportType: String, compilationHandler: @escaping ([League]?) -> Void) {
+        var leagues: [League] = []
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "StoredLeague")
+//        fetchRequest.predicate = NSPredicate(format: "sportType == %@", sportType)
+
+        do {
+            let result = try context.fetch(fetchRequest)
+            for data in result {
+                let leagueKey = data.value(forKey: "leagueKey") as? Int ?? 0
+                let leagueName = data.value(forKey: "leagueName") as? String ?? ""
+                let leagueLogo = data.value(forKey: "leagueLogo") as? String ?? ""
+
+                let league = League(league_key: leagueKey, league_name: leagueName, league_logo: leagueLogo)
+                leagues.append(league)
+            }
+            compilationHandler(leagues)
+        } catch let error as NSError {
+            print("Failed to fetch: \(error.localizedDescription)")
+            compilationHandler(nil)
+        }
+    }
+
+    
 }
