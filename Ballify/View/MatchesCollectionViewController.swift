@@ -6,67 +6,38 @@
 //
 
 import UIKit
+import Kingfisher
 
 private let reuseIdentifier = "leagueCell"
 
 class MatchesCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     ///------------
-    let finishedFixtures: [FixtureResponse] = [
-        FixtureResponse(event_key: 1001, event_date: "2025-05-10", event_time: "15:00", event_home_team: "FC Alpha", event_away_team: "Beta United", event_final_result: "2 - 1", event_status: "Finished", home_team_logo: "https://example.com/logo_alpha.png", away_team_logo: "https://example.com/logo_beta.png"),
-        FixtureResponse(event_key: 1002, event_date: "2025-05-10", event_time: "17:30", event_home_team: "Gamma FC", event_away_team: "Delta City", event_final_result: "1 - 1", event_status: "Finished", home_team_logo: "https://example.com/logo_gamma.png", away_team_logo: "https://example.com/logo_delta.png"),
-        FixtureResponse(event_key: 1003, event_date: "2025-05-10", event_time: "20:00", event_home_team: "Omega Rovers", event_away_team: "Epsilon SC", event_final_result: "0 - 3", event_status: "Finished", home_team_logo: "https://example.com/logo_omega.png", away_team_logo: "https://example.com/logo_epsilon.png"),
-        FixtureResponse(event_key: 1004, event_date: "2025-05-11", event_time: "14:00", event_home_team: "Lions FC", event_away_team: "Sharks FC", event_final_result: "2 - 2", event_status: "Finished", home_team_logo: "https://example.com/logo_lions.png", away_team_logo: "https://example.com/logo_sharks.png"),
-        FixtureResponse(event_key: 1005, event_date: "2025-05-11", event_time: "16:45", event_home_team: "Falcons United", event_away_team: "Wolves FC", event_final_result: "3 - 0", event_status: "Finished", home_team_logo: "https://example.com/logo_falcons.png", away_team_logo: "https://example.com/logo_wolves.png")
-    ]
-
-    let upcomingFixtures: [FixtureResponse] = [
-        FixtureResponse(event_key: 1006, event_date: "2025-05-12", event_time: "18:00", event_home_team: "Kings XI", event_away_team: "Titans Club", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_kings.png", away_team_logo: "https://example.com/logo_titans.png"),
-        FixtureResponse(event_key: 1007, event_date: "2025-05-12", event_time: "20:30", event_home_team: "Phoenix FC", event_away_team: "Blazers", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_phoenix.png", away_team_logo: "https://example.com/logo_blazers.png"),
-        FixtureResponse(event_key: 1008, event_date: "2025-05-13", event_time: "13:00", event_home_team: "Storm Riders", event_away_team: "Galaxy Stars", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_storm.png", away_team_logo: "https://example.com/logo_galaxy.png"),
-        FixtureResponse(event_key: 1009, event_date: "2025-05-13", event_time: "16:15", event_home_team: "Tornado FC", event_away_team: "Comets FC", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_tornado.png", away_team_logo: "https://example.com/logo_comets.png"),
-        FixtureResponse(event_key: 1010, event_date: "2025-05-13", event_time: "19:00", event_home_team: "Bulls United", event_away_team: "Rhinos", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_bulls.png", away_team_logo: "https://example.com/logo_rhinos.png"),
-        FixtureResponse(event_key: 1011, event_date: "2025-05-14", event_time: "15:30", event_home_team: "Spartans", event_away_team: "Gladiators", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_spartans.png", away_team_logo: "https://example.com/logo_gladiators.png"),
-        FixtureResponse(event_key: 1012, event_date: "2025-05-14", event_time: "18:00", event_home_team: "Centaurs", event_away_team: "Griffins", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_centaurs.png", away_team_logo: "https://example.com/logo_griffins.png"),
-        FixtureResponse(event_key: 1013, event_date: "2025-05-15", event_time: "12:00", event_home_team: "Panthers", event_away_team: "Cobras", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_panthers.png", away_team_logo: "https://example.com/logo_cobras.png"),
-        FixtureResponse(event_key: 1014, event_date: "2025-05-15", event_time: "15:00", event_home_team: "Vikings", event_away_team: "Raiders", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_vikings.png", away_team_logo: "https://example.com/logo_raiders.png"),
-        FixtureResponse(event_key: 1015, event_date: "2025-05-15", event_time: "19:30", event_home_team: "Eagles", event_away_team: "Hawks", event_final_result: nil, event_status: "", home_team_logo: "https://example.com/logo_eagles.png", away_team_logo: "https://example.com/logo_hawks.png")
-    ]
+    var finishedFixtures: [Fixture] = [ ]
+    var upcomingFixtures: [Fixture] = []
+    var teams: [Team] = []
     
-    let teams: [TeamRsponse] = [
-        TeamRsponse(
-            team_name: "Lions FC",
-            team_logo: "https://example.com/logo_lions.png",
-            players: [
-                Player(
-                    player_image: "https://example.com/player1.png",
-                    player_name: "John Smith",
-                    player_number: "10",
-                    player_type: "Forward"
-                )
-            ]
-        ),
-        TeamRsponse(
-            team_name: "Sharks United",
-            team_logo: "https://example.com/logo_sharks.png",
-            players: [
-                Player(
-                    player_image: "https://example.com/player2.png",
-                    player_name: "Carlos Mendes",
-                    player_number: "5",
-                    player_type: "Defender"
-                )
-            ]
-        )
-    ]
+    var sportType: SportType!
+    var leagueId : Int!
+    var leagueName : String!
+    var leagueLogo : String!
+
+
+    let presenter = LeagueDetailsPresenter()
 
     //----
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        sportType = SportType.football
+        presenter.attachToView(leagaDetailsVC: self)
+        
+        presenter.getLeagueDetails(sportType: sportType.rawValue, leagueId: self.leagueId)
+        presenter.getTeamDetails(sportType: sportType.rawValue, leagueId: leagueId)
+
         
         collectionView.register(SectionHeader.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
 
-        self.title = "UFE Champion Matches"
+        self.title = leagueName
             let rightButton = UIButton(type: .system)
             rightButton.setImage(UIImage(systemName: "heart"), for: .normal)
             rightButton.tintColor = .green
@@ -78,12 +49,6 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             .foregroundColor: UIColor.systemGreen
             ]
             navigationController?.navigationBar.titleTextAttributes = textAttributes
-        /*
-         pre Screen
-         let backItem = UIBarButtonItem()
-             backItem.title = ""
-             navigationItem.backBarButtonItem = backItem
-         */
         
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         
@@ -93,11 +58,24 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             switch(index)
             {
             case 0:
-                return self.drawHorezntalSection()
+                if self.upcomingFixtures.isEmpty{
+                    return nil
+                }
+                else{
+                    return self.drawHorezntalSection()
+                }
             case 1:
-                return self.drawVerticalSection()
+                if self.finishedFixtures.isEmpty{
+                    return nil
+                }else{
+                    return self.drawVerticalSection()
+                }
             case 2:
-                return self.drawHorezntalSection()
+                if self.teams.isEmpty{
+                    return nil
+                }else{
+                    return self.drawHorezntalSection()
+                }
             default:
                 return nil
             }
@@ -105,8 +83,35 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         }
         self.collectionView.setCollectionViewLayout(layout, animated: true)
     }
+    
+    func renderToView(finitshedMaches :[Fixture], upcomingMatches : [Fixture]){
+       // print("Matches Details rederView \(finitshedMaches[0].event_status)")
+        self.finishedFixtures = finitshedMaches
+        self.upcomingFixtures = upcomingMatches
+        collectionView.reloadData()
+    }
+    func renderTeamToView(teams : [Team])
+    {
+        self.teams = teams
+        print("Collectiion View teams Count = \(teams.count)")
+        collectionView.reloadData()
+    }
     @objc func rightButtonClicked() {
-        print("rightButton button tapped!")
+        print("League Name \(leagueName ?? "N/A") League Logo \(leagueLogo ?? "N/A")")
+        let league = League(league_key: self.leagueId, league_name: self.leagueName, league_logo: self.leagueLogo)
+        presenter.saveLeagueToCoreData(league: league, sportType: self.sportType.rawValue)
+        showAlert()
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Added To Favorite",
+                                      message: "\(leagueName ?? "N/A") add successfully.",
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     func drawHorezntalSection() -> NSCollectionLayoutSection{
@@ -225,12 +230,23 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                    let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! SectionHeader
                    switch indexPath.section {
                    case 0:
-                       
+                       if upcomingFixtures.isEmpty {
+                           headerView.titleLabel.text = "NO Upcoming Matches"
+                       }else{
                            headerView.titleLabel.text = "Upcoming Matches"
+                       }
                    case 1:
+                       if finishedFixtures.isEmpty {
+                           headerView.titleLabel.text = "NO Latest Matches"
+                       }else{
                            headerView.titleLabel.text = "Latest Matches"
+                       }
                    case 2:
+                       if teams.isEmpty{
+                           headerView.titleLabel.text = "NO Teams"
+                       }else{
                            headerView.titleLabel.text = "Teams"
+                       }
                    default:
                        headerView.titleLabel.text = ""
                    }
@@ -238,20 +254,28 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
                    return headerView
                }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-                    return CGSize(width: collectionView.bounds.width, height: 50)
+                    return CGSize(width: collectionView.bounds.width, height: 40)
                 }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        var match :FixtureResponse!
+        var match :Fixture!
         switch(indexPath.section)
         {
         case 0: //get data from upcoming list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = upcomingFixtures[indexPath.row]
-            cell.leftImg.image = UIImage(named: "cricket")
-            cell.rightImg.image = UIImage(named: "Instagram")
-            cell.leftLabel.text = match.event_home_team
-            cell.rightLabel.text = match.event_away_team
+            
+            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            if sportType == .tennis
+            {
+                cell.leftLabel.text = match.event_first_player
+                cell.rightLabel.text = match.event_home_team
+            }else{
+                cell.leftLabel.text = match.event_home_team
+                cell.rightLabel.text = match.event_away_team
+            }
+            
             cell.dateLabel.text = match.event_date
             cell.timeLabel.text = match.event_time
             cell.resultLabel.text = ""
@@ -263,8 +287,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         case 1: //get data from Latest Events list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = finishedFixtures[indexPath.row]
-            cell.leftImg.image = UIImage(named: "cricket")
-            cell.rightImg.image = UIImage(named: "Instagram")
+            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date
@@ -274,11 +298,13 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             // Configure the cell
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
+            cell.backgroundColor = UIColor.systemYellow.withAlphaComponent(0.6)
+
             return cell
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
             let team = teams[indexPath.row]
-            cell.teamImg.image = UIImage(named: "Instagram")
+            cell.teamImg.kf.setImage(with: URL(string: team.team_logo ?? ""),placeholder: UIImage(named: "laliga"))
             cell.teamName.text = team.team_name
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
@@ -291,16 +317,18 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 2{
+        if indexPath.section == 2{ /// teams only
             print("Team Clicked")
+            let team = teams[indexPath.row]
+            print("\(team.team_name!)")
             
-            /*
-             let teamVC = self.storyboard?.instantiateViewController(withIdentifier: "teamDetails") as! TeamDetailsViewController
-             navigationController?.pushViewController(teamVC, animated: true)
+            let teamVC = self.storyboard?.instantiateViewController(withIdentifier: "teamDetails") as! TeamTableViewController
+            teamVC.teamData = teams[indexPath.row]
+            navigationController?.pushViewController(teamVC, animated: true)
 
-             */
         }
         
     }
 
 }
+

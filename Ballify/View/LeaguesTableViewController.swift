@@ -106,7 +106,12 @@ class LeaguesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("item no\(indexPath.item)")
+        let league = leagues[indexPath.row]
         let matchesVC = self.storyboard?.instantiateViewController(withIdentifier: "matches") as! MatchesCollectionViewController
+        matchesVC.leagueId = league.league_key
+        matchesVC.leagueName = league.league_name
+        matchesVC.sportType = sportType
+        matchesVC.leagueLogo = league.league_logo
         navigationController?.pushViewController(matchesVC, animated: true)
 
     }
