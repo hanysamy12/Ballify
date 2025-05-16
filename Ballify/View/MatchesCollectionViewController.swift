@@ -100,8 +100,19 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         print("League Name \(leagueName ?? "N/A") League Logo \(leagueLogo ?? "N/A")")
         let league = League(league_key: self.leagueId, league_name: self.leagueName, league_logo: self.leagueLogo)
         presenter.saveLeagueToCoreData(league: league, sportType: self.sportType.rawValue)
+        showAlert()
     }
     
+    func showAlert() {
+        let alert = UIAlertController(title: "Added To Favorite",
+                                      message: "\(leagueName ?? "N/A") add successfully.",
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func drawHorezntalSection() -> NSCollectionLayoutSection{
      //item size

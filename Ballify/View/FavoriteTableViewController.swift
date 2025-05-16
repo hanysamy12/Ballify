@@ -6,25 +6,33 @@
 //
 
 import UIKit
-import Network
+import Reachability
+
 class FavoriteTableViewController: UITableViewController {
     var leagues: [League] = []
     var sportType: SportType!
+    var presenter: FavoriteTablePresenter!
     
-    let monitor = NWPathMonitor()
-    let queue = DispatchQueue(label: "NetworkMonitor")
+    var reachability: Reachability!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         // controller >> ViewModel to get the data
-        let presenter  = FavoriteTablePresenter()
+        presenter  = FavoriteTablePresenter()
         presenter.attachView(favoriteTableViewController: self)
        
-        self.title = "Football Leagues"
         presenter.getDataFromCoreDate(sportType: SportType.football.rawValue)
 
         
+        print("from viewDidLoad in favorite!")
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("from viewWillAppear in favorite!")
+        presenter.getDataFromCoreDate(sportType: SportType.football.rawValue)
     }
     
     
@@ -64,48 +72,74 @@ class FavoriteTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Leagues You Love"
+    }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "favDetails") as! FavoriteDetailsViewController
-        monitor.pathUpdateHandler = { path in
-            if path.status == .satisfied {
-                print("Connected")
-            } else {
-                print("No connection")
-                DispatchQueue.main.async {
-                    self.showBasicAlert()
-                }
-
-            }
-            
+        
+        // Setup Reachability
+        reachability = try? Reachability()
+        
+        // Check network status
+        if reachability.connection != .unavailable {
+            navigationController?.pushViewController(detailsVC, animated: true)
+        } else {
+            showAlert()
         }
-        monitor.start(queue: queue)
-        navigationController?.pushViewController(detailsVC, animated: true)
+    
     }
-    /*
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let leagueToDelete = leagues[indexPath.row]
+
+            let alert = UIAlertController(title: "Delete League",
+                                          message: "Are you sure you want to delete this league from favorites?",
+                                          preferredStyle: .alert)
+
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+
+                CoreDataService.deleteLeagueFromCoreData(leagueKey: leagueToDelete.league_key)
+                
+                self.leagues.remove(at: indexPath.row)
+                
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            alert.addAction(deleteAction)
+            alert.addAction(cancelAction)
+
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+
+
+    
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
-    */
-
-    func showBasicAlert() {
-        // 1. Create the alert controller
-        let alert = UIAlertController(
-            title: "Wornning",
-            message: "Connect To Internet To Show Details",
-            preferredStyle: .alert
-        )
+    
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "No Internet Connection",
+                                      message: "Please check your internet connection and try again.",
+                                      preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-            print("OK button tapped")
-        })
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
         
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 
 }

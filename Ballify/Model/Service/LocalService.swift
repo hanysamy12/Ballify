@@ -68,6 +68,24 @@ class CoreDataService : CoreDataProtocol{
             compilationHandler(nil)
         }
     }
+    
+    
+    static func deleteLeagueFromCoreData(leagueKey: Int) {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "StoredLeague")
+        fetchRequest.predicate = NSPredicate(format: "leagueKey == %d", leagueKey)
+
+        do {
+            let leaguesToDelete = try context.fetch(fetchRequest)
+            for league in leaguesToDelete {
+                context.delete(league)
+            }
+            try context.save()
+            print("Deleted successfully")
+        } catch let error as NSError {
+            print("Could not delete. \(error), \(error.userInfo)")
+        }
+    }
+
 
     
 }
