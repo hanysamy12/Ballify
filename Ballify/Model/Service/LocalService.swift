@@ -58,8 +58,9 @@ class CoreDataService : CoreDataProtocol{
                 let leagueKey = data.value(forKey: "leagueKey") as? Int ?? 0
                 let leagueName = data.value(forKey: "leagueName") as? String ?? ""
                 let leagueLogo = data.value(forKey: "leagueLogo") as? String ?? ""
+                let leagueSportType = data.value(forKey: "sportType") as? String ?? ""
 
-                let league = League(league_key: leagueKey, league_name: leagueName, league_logo: leagueLogo)
+                let league = League(league_key: leagueKey, league_name: leagueName, league_logo: leagueLogo, sportType: leagueSportType)
                 leagues.append(league)
             }
             compilationHandler(leagues)

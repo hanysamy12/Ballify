@@ -265,8 +265,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = upcomingFixtures[indexPath.row]
             
-            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
-            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.leftImg.kf.setImage(with: URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "club_logo"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "club_logo"))
             if sportType == .tennis
             {
                 cell.leftLabel.text = match.event_first_player
@@ -287,8 +287,8 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         case 1: //get data from Latest Events list
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "leagueCell", for: indexPath) as! MatcheCollectionViewCell
             match = finishedFixtures[indexPath.row]
-            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
-            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "laliga"))
+            cell.leftImg.kf.setImage(with:URL(string: match.home_team_logo ?? ""), placeholder: UIImage(named: "club_logo"))
+            cell.rightImg.kf.setImage(with:URL(string: match.away_team_logo ?? ""), placeholder: UIImage(named: "club_logo"))
             cell.leftLabel.text = match.event_home_team
             cell.rightLabel.text = match.event_away_team
             cell.dateLabel.text = match.event_date
@@ -304,7 +304,7 @@ class MatchesCollectionViewController: UICollectionViewController, UICollectionV
         default:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as! TeamCollectionViewCell
             let team = teams[indexPath.row]
-            cell.teamImg.kf.setImage(with: URL(string: team.team_logo ?? ""),placeholder: UIImage(named: "laliga"))
+            cell.teamImg.kf.setImage(with: URL(string: team.team_logo ?? ""),placeholder: UIImage(named: "club_logo"))
             cell.teamName.text = team.team_name
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true

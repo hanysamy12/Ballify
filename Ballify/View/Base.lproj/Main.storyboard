@@ -586,7 +586,7 @@
         <image name="dancing-banana.gif" width="365" height="360"/>
         <image name="football" width="474" height="632"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
-        <image name="laliga" width="774" height="765"/>
+        <image name="laliga" width="512" height="512"/>
         <image name="soccerball" catalog="system" width="128" height="123"/>
         <image name="tennis" width="640" height="359"/>
         <systemColor name="systemBackgroundColor">
