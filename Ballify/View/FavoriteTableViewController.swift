@@ -81,14 +81,19 @@ class FavoriteTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let detailsVC = self.storyboard?.instantiateViewController(withIdentifier: "favDetails") as! FavoriteDetailsViewController
         
         // Setup Reachability
         reachability = try? Reachability()
         
         // Check network status
         if reachability.connection != .unavailable {
-            navigationController?.pushViewController(detailsVC, animated: true)
+            let league = leagues[indexPath.row]
+            let matchesVC = self.storyboard?.instantiateViewController(withIdentifier: "matches") as! MatchesCollectionViewController
+            matchesVC.leagueId = league.league_key
+            matchesVC.leagueName = league.league_name
+            matchesVC.sportType = SportType(rawValue: league.sportType ?? "")
+            matchesVC.leagueLogo = league.league_logo
+            navigationController?.pushViewController(matchesVC, animated: true)
         } else {
             showAlert()
         }

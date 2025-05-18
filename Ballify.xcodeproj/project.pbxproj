@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		221EBEC72DD94D0000A45C65 /* BallifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221EBEC62DD94D0000A45C65 /* BallifyTests.swift */; };
 		223DD0CF2DD26747007F1C81 /* SportType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223DD0CE2DD26747007F1C81 /* SportType.swift */; };
 		224110D02DD0056700EE80E0 /* LeaguesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224110CF2DD0056700EE80E0 /* LeaguesTableViewController.swift */; };
 		228146DB2DD49930005AA88A /* TeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228146DA2DD49930005AA88A /* TeamTableViewController.swift */; };
@@ -38,7 +39,19 @@
 		3FF19BE92DD25B7B009998B0 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FF19BE82DD25B7B009998B0 /* SectionHeader.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		221EBEC82DD94D0000A45C65 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3FD5E10F2DCFA436006C5235 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3FD5E1162DCFA436006C5235;
+			remoteInfo = Ballify;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		221EBEC42DD94D0000A45C65 /* BallifyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BallifyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		221EBEC62DD94D0000A45C65 /* BallifyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BallifyTests.swift; sourceTree = "<group>"; };
 		223DD0CE2DD26747007F1C81 /* SportType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportType.swift; sourceTree = "<group>"; };
 		224110CF2DD0056700EE80E0 /* LeaguesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaguesTableViewController.swift; sourceTree = "<group>"; };
 		228146DA2DD49930005AA88A /* TeamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +83,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		221EBEC12DD94D0000A45C65 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FD5E1142DCFA436006C5235 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		221EBEC52DD94D0000A45C65 /* BallifyTests */ = {
+			isa = PBXGroup;
+			children = (
+				221EBEC62DD94D0000A45C65 /* BallifyTests.swift */,
+			);
+			path = BallifyTests;
+			sourceTree = "<group>";
+		};
 		228469502DD20DF0008E99F5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD5E1192DCFA436006C5235 /* Ballify */,
+				221EBEC52DD94D0000A45C65 /* BallifyTests */,
 				3FD5E1182DCFA436006C5235 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -163,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				3FD5E1172DCFA436006C5235 /* Ballify.app */,
+				221EBEC42DD94D0000A45C65 /* BallifyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +214,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		221EBEC32DD94D0000A45C65 /* BallifyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 221EBECC2DD94D0000A45C65 /* Build configuration list for PBXNativeTarget "BallifyTests" */;
+			buildPhases = (
+				221EBEC02DD94D0000A45C65 /* Sources */,
+				221EBEC12DD94D0000A45C65 /* Frameworks */,
+				221EBEC22DD94D0000A45C65 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				221EBEC92DD94D0000A45C65 /* PBXTargetDependency */,
+			);
+			name = BallifyTests;
+			productName = BallifyTests;
+			productReference = 221EBEC42DD94D0000A45C65 /* BallifyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		3FD5E1162DCFA436006C5235 /* Ballify */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3FD5E12E2DCFA437006C5235 /* Build configuration list for PBXNativeTarget "Ballify" */;
@@ -216,6 +264,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					221EBEC32DD94D0000A45C65 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 3FD5E1162DCFA436006C5235;
+					};
 					3FD5E1162DCFA436006C5235 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -240,11 +292,19 @@
 			projectRoot = "";
 			targets = (
 				3FD5E1162DCFA436006C5235 /* Ballify */,
+				221EBEC32DD94D0000A45C65 /* BallifyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		221EBEC22DD94D0000A45C65 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FD5E1152DCFA436006C5235 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +318,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		221EBEC02DD94D0000A45C65 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				221EBEC72DD94D0000A45C65 /* BallifyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3FD5E1132DCFA436006C5235 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,6 +358,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		221EBEC92DD94D0000A45C65 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3FD5E1162DCFA436006C5235 /* Ballify */;
+			targetProxy = 221EBEC82DD94D0000A45C65 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		3FD5E1202DCFA436006C5235 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -310,6 +386,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		221EBECA2DD94D0000A45C65 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ITI.BallifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballify.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ballify";
+			};
+			name = Debug;
+		};
+		221EBECB2DD94D0000A45C65 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MACOSX_DEPLOYMENT_TARGET = 13.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ITI.BallifyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ballify.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Ballify";
+			};
+			name = Release;
+		};
 		3FD5E12C2DCFA437006C5235 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -481,6 +599,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		221EBECC2DD94D0000A45C65 /* Build configuration list for PBXNativeTarget "BallifyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				221EBECA2DD94D0000A45C65 /* Debug */,
+				221EBECB2DD94D0000A45C65 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		3FD5E1122DCFA436006C5235 /* Build configuration list for PBXProject "Ballify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
