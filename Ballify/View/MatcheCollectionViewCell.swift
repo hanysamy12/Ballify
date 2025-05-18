@@ -18,10 +18,6 @@ class MatcheCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var resultLabel: UILabel!
     
     override func layoutSubviews() {
-        leftImg.layer.cornerRadius = leftImg.frame.size.width / 2
-           leftImg.clipsToBounds = true
-        
-        rightImg.layer.cornerRadius = leftImg.frame.size.width / 2
-           leftImg.clipsToBounds = true
+
     }
 }

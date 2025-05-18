@@ -48,7 +48,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="Vtc-S4-30q" firstAttribute="centerY" secondItem="avw-6W-0W3" secondAttribute="centerY" id="9C1-YY-8R2"/>
                                     <constraint firstItem="Vtc-S4-30q" firstAttribute="width" secondItem="avw-6W-0W3" secondAttribute="width" multiplier="0.915254" id="L9R-7b-U7t"/>
@@ -87,7 +87,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="oRN-Pc-dJh" firstAttribute="centerY" secondItem="QS5-ie-a5e" secondAttribute="centerY" id="Mqo-Bh-vIU"/>
                                     <constraint firstItem="oRN-Pc-dJh" firstAttribute="height" secondItem="QS5-ie-a5e" secondAttribute="height" multiplier="0.951952" id="db1-Jl-R0c"/>
@@ -126,7 +126,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="mRj-Tg-HCp" firstAttribute="height" secondItem="RNy-q2-l6k" secondAttribute="height" multiplier="0.951952" id="4XJ-X9-OOQ"/>
                                     <constraint firstItem="mRj-Tg-HCp" firstAttribute="centerX" secondItem="RNy-q2-l6k" secondAttribute="centerX" id="MDV-tU-PgL"/>
@@ -165,7 +165,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="J5U-fz-qJE" firstAttribute="centerX" secondItem="Oay-jX-Rf1" secondAttribute="centerX" id="1xT-Md-lzF"/>
                                     <constraint firstItem="J5U-fz-qJE" firstAttribute="height" secondItem="Oay-jX-Rf1" secondAttribute="height" multiplier="0.951952" id="4NX-xg-jcQ"/>
@@ -175,7 +175,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oay-jX-Rf1" secondAttribute="bottom" id="17g-0S-FnX"/>
                             <constraint firstItem="avw-6W-0W3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2vg-Ig-pJV"/>
@@ -214,7 +214,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="o7Q-ci-cZD">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="105" id="WsQ-Fu-tnz" customClass="CustomTableViewCell" customModule="Ballify" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="105"/>
@@ -236,7 +236,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="cellImage" destination="CTX-gY-pwq" id="WiW-Z8-Gxe"/>
                                     <outlet property="cellLabel" destination="RMs-UA-yb8" id="Pe0-tb-UwJ"/>
@@ -325,7 +325,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="8uK-7U-OVm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="leaguesCell" rowHeight="105" id="YZl-hH-4Bv" customClass="CustomTableViewCell" customModule="Ballify" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="105"/>
@@ -347,7 +347,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="cellImage" destination="U7N-Km-3Yi" id="hWi-Sz-Xtl"/>
                                     <outlet property="cellLabel" destination="V3G-tP-vld" id="yoZ-fa-u4A"/>
@@ -373,7 +373,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="MBQ-JF-ulX">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70478778802882303" green="0.89000000000000001" blue="0.1124792078132128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PhC-RZ-9bB">
                             <size key="itemSize" width="391" height="214"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -526,7 +526,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="vdu-um-cv4">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.84610723909999996" green="0.89000000000000001" blue="0.1188687907" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="teamCell" rowHeight="196" id="TOY-1V-KW3" customClass="TeamTableViewCell" customModule="Ballify" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="196"/>

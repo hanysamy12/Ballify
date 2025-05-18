@@ -44,8 +44,22 @@ class NetworkService: NetworkProtocol {
     
     static func fetchFixtureFromJSON(sportType: String, leagueId: Int, compilation: @escaping (FixtureResponse?) -> Void) {
         // Construct the URL with query parameters
-        let url = "https://apiv2.allsportsapi.com/\(sportType)/?met=Fixtures&APIkey=ada750b74f80bd1937fae4524ced00601c971ee2f1b4f22f9c2d8050a8e19ed1&from=2025-05-11&to=2025-05-16&leagueId=\(leagueId)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+
+        let today = Date()
+
+        let startDate = Calendar.current.date(byAdding: .day, value: -5, to: today)!
+        let startDateString = dateFormatter.string(from: startDate)
+
+        let endDate = Calendar.current.date(byAdding: .day, value: 5, to: today)!
+        let endDateString = dateFormatter.string(from: endDate)
+
+        let url = "https://apiv2.allsportsapi.com/\(sportType)/?met=Fixtures&APIkey=ada750b74f80bd1937fae4524ced00601c971ee2f1b4f22f9c2d8050a8e19ed1&from=\(startDateString)&to=\(endDateString)&leagueId=\(leagueId)"
+
         print("NetworkServices \(url)")
+
         
         let headers: HTTPHeaders = [
             "Accept": "application/json"

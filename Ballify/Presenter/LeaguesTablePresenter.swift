@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Reachability
 
 class LeaguesTablePresenter{
     
+    var reachability: Reachability!
     
     weak var vc: LeaguesTableViewController!
 
@@ -21,9 +23,20 @@ class LeaguesTablePresenter{
         
         NetworkService.fetchLeaguesFromJSON(sportType: sportType){ res in
             
+            // Setup Reachability
+            self.reachability = try? Reachability()
             
             //add data to ViewController
-            self.vc.renderToView(result:res!)
+            
+            // Check network status
+            if self.reachability.connection != .unavailable {
+                guard let res = res else{return}
+                self.vc.renderToView(result:res)
+
+            } else {
+                self.vc.noInternet()
+            }
+            
             
             
         }
