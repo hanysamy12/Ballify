@@ -9,12 +9,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Ballify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avw-6W-0W3">
@@ -195,7 +195,7 @@
                             <constraint firstItem="QS5-ie-a5e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.500424" id="x52-Qj-QyH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="soccerball" catalog="system" id="1VT-Q5-ix9"/>
+                    <tabBarItem key="tabBarItem" title="" image="soccerball" catalog="system" id="1VT-Q5-ix9"/>
                     <connections>
                         <outlet property="basketballImg" destination="EPa-5z-3Vb" id="q6D-if-P9V"/>
                         <outlet property="cricketImg" destination="ruJ-iA-QDR" id="kRU-Sn-rWC"/>
@@ -207,12 +207,12 @@
             </objects>
             <point key="canvasLocation" x="910.68702290076328" y="-393.66197183098592"/>
         </scene>
-        <!--Favorite-->
+        <!--Favorite Table View Controller-->
         <scene sceneID="1pJ-0N-Qbi">
             <objects>
                 <tableViewController id="v4R-uv-cWi" customClass="FavoriteTableViewController" customModule="Ballify" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="o7Q-ci-cZD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="769"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.70478778799999997" green="0.89000000000000001" blue="0.11247920779999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -260,7 +260,7 @@
                             <outlet property="delegate" destination="v4R-uv-cWi" id="IaF-P0-jG4"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.fill" catalog="system" id="nUq-Ua-Dbw"/>
+                    <tabBarItem key="tabBarItem" title="" image="heart.fill" catalog="system" id="nUq-Ua-Dbw"/>
                     <navigationItem key="navigationItem" id="n6b-55-MQM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gH0-Yg-iw3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -273,10 +273,11 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Eic-Qz-Djb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="MjE-x2-yJ6"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hs6-aD-8Op">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="hs6-aD-8Op">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.62325921760000003" green="0.87618317270000001" blue="0.22644568919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.24471571140000001" green="0.3912083019" blue="0.18709759149999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="awr-6f-Hpd"/>
