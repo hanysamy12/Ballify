@@ -70,6 +70,23 @@ class LeaguesTableViewController: UITableViewController {
         }
     }
     
+    func noInternet(){
+        DispatchQueue.main.async {
+            self.showAlert()
+        }
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "No Internet Connection",
+                                      message: "Please check your internet connection and try again.",
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

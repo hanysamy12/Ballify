@@ -21,6 +21,7 @@ struct Fixture : Codable{
     let event_status: String?
     let home_team_logo: String?
     let away_team_logo: String?
+    let country_name: String?
     
     
     let event_first_player: String?
