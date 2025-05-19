@@ -1,5 +1,5 @@
 # 🏀 Ballify – Sports App
-An elegant iOS application that allows users to explore sports, leagues, and teams using the AllSportsAPI, featuring CoreData support for favorites, smooth navigation, and modern Swift UI design patterns.
+An elegant iOS application that allows users to explore sports, leagues, and teams using the AllSportsAPI, featuring CoreData support for favorites and smooth navigation.
 
 ## Features
 
